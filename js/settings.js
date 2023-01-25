@@ -15,7 +15,7 @@
 
     //background constants
     var navbar_classes = "navbar-danger navbar-success navbar-warning navbar-dark navbar-light navbar-primary navbar-info navbar-pink";
-    var sidebar_classes = "sidebar-light sidebar-dark";
+    var sidebar_classes = "sidebar-light sidebar-info";
     var $body = $("body");
 
     //sidebar backgrounds
@@ -25,9 +25,9 @@
       $(".sidebar-bg-options").removeClass("selected");
       $(this).addClass("selected");
     });
-    $("#sidebar-dark-theme").on("click" , function(){
+    $("#sidebar-info-theme").on("click" , function(){
       $body.removeClass(sidebar_classes);
-      $body.addClass("sidebar-dark");
+      $body.addClass("sidebar-info");
       $(".sidebar-bg-options").removeClass("selected");
       $(this).addClass("selected");
     });
