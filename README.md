@@ -1,2 +1,1 @@
-# generate_artikel
-generate artikel m.cahyo & jo
+# generate random article by TADS
