@@ -115,7 +115,7 @@
         <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-table mr-1"></i>
-              Data Artikel
+              Data Artikel | <button type="button" class="btn btn-dark">Tambah Data Artikel</button>
             </div>
             <div class="card-body">
               <div class="table-responsive">
