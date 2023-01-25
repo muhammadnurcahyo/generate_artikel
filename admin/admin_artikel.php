@@ -96,13 +96,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="../admin/data_target.php">
+            <a class="nav-link"  href="../admin/admin_target.php">
               <i class="icon-contract menu-icon"></i>
               <span class="menu-title">Data Target</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="../admin/data_artikel.php" aria-expanded="false" aria-controls="ui-basic">
+          <li class="nav-item active">
+            <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Data Artikel</span>
             </a>

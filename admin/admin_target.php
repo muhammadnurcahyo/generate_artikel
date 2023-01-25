@@ -95,14 +95,14 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link"  href="../admin/data_target.php">
+          <li class="nav-item active">
+            <a class="nav-link"  href="#">
               <i class="icon-contract menu-icon"></i>
               <span class="menu-title">Data Target</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="../admin/data_artikel.php">
+            <a class="nav-link"  href="../admin/admin_artikel.php">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">Data Artikel</span>
             </a>
@@ -115,7 +115,10 @@
         <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-table mr-1"></i>
-              Data Target
+              Data Target | <button type="button" class="btn btn-warning btn-icon-text">
+                          <i class="ti-plus btn-icon-prepend"></i>                                                    
+                          Tambah Data Target
+                        </button>
             </div>
             <div class="card-body">
               <div class="table-responsive">
