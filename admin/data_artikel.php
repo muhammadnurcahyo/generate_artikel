@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- comment -->
+<!-- comment 2 -->
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
