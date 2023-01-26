@@ -1,3 +1,14 @@
+<?php
+require 'function.php';
+
+//jika sudah masuk dashboard
+if (isset($_SESSION['log'])) {
+} else {
+    header('location:login.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +18,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css.map">
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -50,7 +63,7 @@
               <img src="../images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <a href="logout.php" class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
@@ -89,19 +102,19 @@
         <ul class="nav">
           <li class="nav-item">
           <a class="nav-link" href="../admin/index.php">
-              <i class="icon-grid menu-icon"></i>
+              <i class="mdi mdi-apps menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item active">
             <a class="nav-link"  href="#">
-              <i class="icon-contract menu-icon"></i>
+              <i class="mdi mdi-eye-off menu-icon"></i>
               <span class="menu-title">Data Target</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  href="../admin/admin_artikel.php">
-              <i class="icon-layout menu-icon"></i>
+            <i class="mdi mdi-keyboard menu-icon"></i>
               <span class="menu-title">Data Artikel</span>
             </a>
           </li>
@@ -113,7 +126,7 @@
         <div class="card mb-4">
             <div class="card-header">
               <i class="fas fa-table mr-1"></i>
-              Data Target | <button type="button" class="btn btn-warning btn-icon-text">
+              Data Target | <button type="button" class="btn btn-warning btn-icon-text" data-toggle="modal" data-target="#exampleModalCenter">
                           <i class="ti-plus btn-icon-prepend"></i>                                                    
                           Tambah Data Target
                         </button>
@@ -123,23 +136,92 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                    <th>No.</th>
+                    <th>Keyword</th>
+                    <th>Link</th>
+                    <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
+                  <?php
+                                        $ambildata = mysqli_query($conn, "select * from target");
+                                        $i = 1;
+                                        while ($data = mysqli_fetch_array($ambildata)) {
+                                            $keyword = $data['keyword'];
+                                            $link_target = $data['link_target'];
+                                            $idt = $data['idtarget']
+                                        ?>
                     <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
+                    <td><?= $i++; ?></td>
+                                                <td><?= $keyword; ?></td>
+                                                <td><?= $link_target; ?></td>
+                                                <td>
+                                                    <!-- Button trigger modal -->
+                                                    <center>
+                                                    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#edit<?= $idt; ?>">
+                                                    <i class="mdi mdi-account-search"></i>
+                                                    </button>
+
+
+                                                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#delete<?= $idt; ?>">
+                                                    <i class="mdi mdi-fingerprint"></i>
+
+                                                    </button>
+                                                    </center>
+                                                </td>
                     </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="edit<?=$idt;?>" >
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Data Target</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                <label for="text">Keywords</label>
+                                                                <input type="text" name="keyword" value="<?=$keyword;?>" class="form-control" required> <br>
+                                                                <label for="text">Link URL</label>
+                                                                <input type="text" name="link_target" value="<?=$link_target;?>" class="form-control" required>
+                                                                <br>
+                                                                <input type="hidden" name="idt" value="<?=$idt;?>">
+                                                                <button type="submit" class="btn btn-primary btn-block" name="updatetarget">Update</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal delete -->
+                                            <div class="modal fade" id="delete<?= $idt; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle"><b>Data target akan dihapus...</b></h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin hapus data "<i><?=$keyword;?></i>" ?
+                                                               <br><br>
+                                                               <input type="hidden" name="idt" value="<?=$idt;?>">
+                                                                <button type="submit" class="btn btn-danger btn-block" name="hapus_target">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                    <?php
+                                        };
+                                        ?>
                   </tbody>
                 </table>
               </div>
@@ -198,6 +280,32 @@
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Data Target</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form method="post">
+                <div class="modal-body">
+                    <label for="text">Keywords</label>
+                    <input type="text" name="keyword" placeholder="Masukan Keywords" class="form-control" required> <br>
+                    <label for="text">Link URL</label>
+                    <input type="text" name="link_target" placeholder="Masukan URL Target" class="form-control" required>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block" name="addnewsubmit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 </html>
 

@@ -25,9 +25,9 @@
       $(".sidebar-bg-options").removeClass("selected");
       $(this).addClass("selected");
     });
-    $("#sidebar-info-theme").on("click" , function(){
+    $("#sidebar-dark-theme").on("click" , function(){
       $body.removeClass(sidebar_classes);
-      $body.addClass("sidebar-info");
+      $body.addClass("sidebar-dark");
       $(".sidebar-bg-options").removeClass("selected");
       $(this).addClass("selected");
     });

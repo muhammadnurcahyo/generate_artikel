@@ -1,1 +1,1 @@
-# generate random article by TADS
+# Article Generator by TADS

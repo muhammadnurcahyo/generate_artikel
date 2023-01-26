@@ -19,6 +19,8 @@ if (isset($_SESSION['log'])) {
   <title>Skydash Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css.map">
   <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
@@ -97,19 +99,19 @@ if (isset($_SESSION['log'])) {
         <ul class="nav">
           <li class="nav-item active">
             <a class="nav-link " href="../admin/index.php">
-              <i class="icon-grid menu-icon"></i>
+              <i class="mdi mdi-apps menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  href="../admin/admin_target.php">
-              <i class="icon-contract menu-icon"></i>
+              <i class="mdi mdi-eye menu-icon"></i>
               <span class="menu-title">Data Target</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  href="../admin/admin_artikel.php" >
-              <i class="icon-layout menu-icon"></i>
+              <i class="mdi mdi-keyboard menu-icon"></i>
               <span class="menu-title">Data Artikel</span>
             </a>
           </li>
