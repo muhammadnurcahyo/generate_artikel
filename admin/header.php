@@ -20,6 +20,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
   <div class="container-scroller">

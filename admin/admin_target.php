@@ -70,7 +70,7 @@ require 'header.php';
                     <tr>
                     <td><?= $i++; ?></td>
                                                 <td><?= $keyword; ?></td>
-                                                <td><?= $link_target; ?></td>
+                                                <td><a href="<?= $link_target; ?>"><?= $link_target; ?></a></td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <center>
