@@ -27,6 +27,7 @@ if (isset($_SESSION['log'])) {
   <link rel="stylesheet" type="text/css" href="../js/select.dataTables.min.css">
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="shortcut icon" href="../images/favicon.png" />
+  <script src="../ckeditor/ckeditor.js"></script>
 </head>
 <body>
   <div class="container-scroller">
@@ -149,25 +150,27 @@ if (isset($_SESSION['log'])) {
                                                 <td><?= $i++; ?></td>
                                                 <td><?= $judul; ?></td>
                                                 <td><center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#lihat_image<?= $idartikel; ?>">
-                                                    <i class="mdi mdi-eye"></i>
-                                                    </button></center></td>
-                                                <td><?= $deskripsi; ?></td>
+                                                <i class="mdi mdi-eye"></i>
+                                                </button></center></td>
+                                                <td><center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#lihat_deskripsi<?= $idartikel; ?>">
+                                                <i class="mdi mdi-eye"></i>
+                                                </button></center></td>
                                                 <td>
-                                                    <!-- Button trigger modal -->
-                                                    <center>
-                                                    <button type="button" class="btn btn-success" disabled>
-                                                    <i class="mdi mdi-eye"></i>
-                                                    </button>
+                                                <!-- Button trigger modal -->
+                                                <center>
+                                                <button type="button" class="btn btn-success" disabled>
+                                                <i class="mdi mdi-eye"></i>
+                                                </button>
 
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit_artikel<?= $idartikel; ?>">
-                                                    <i class="mdi mdi-account-search"></i>
-                                                    </button>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit_artikel<?= $idartikel; ?>">
+                                                <i class="mdi mdi-account-search"></i>
+                                                </button>
 
-                                                    <input type="hidden" name="idtarget" value="<?= $idartikel; ?>">
+                                                <input type="hidden" name="idtarget" value="<?= $idartikel; ?>">
 
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idartikel; ?>">
-                                                    <i class="mdi mdi-fingerprint"></i>
-                                                    </button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idartikel; ?>">
+                                                <i class="mdi mdi-fingerprint"></i>
+                                                </button>
                                         </center>
                                                 </td>
                                             </tr>
@@ -192,9 +195,29 @@ if (isset($_SESSION['log'])) {
                                                 </div>
                                             </div>
 
+                                            <!-- Deskripsi Modal -->
+                                            <div class="modal fade" id="lihat_deskripsi<?= $idartikel; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Data Deskripsi</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <form method="post" enctype="multipart/form-data">
+                                                            <div class="modal-body">
+                                                              <?= $deskripsi; ?>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <!-- Update Modal -->
                                             <div class="modal fade" id="edit_artikel<?= $idartikel; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLongTitle">Edit Data Artikel</h5>
@@ -223,7 +246,11 @@ if (isset($_SESSION['log'])) {
                                                                 </script>
                                                                 <br><br>
                                                                 <p><i style="color: red;">*Abaikan jika tidak merubah gambar</i></p>
-                                                                <textarea type="text" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control"><?= $deskripsi; ?></textarea>
+                                                                <label for="exampleFormControlTextarea1">Deskripsi</label>
+                                                                <textarea id="editor1" placeholder="Masukkan Deskripsi" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"><?= $deskripsi; ?></textarea>
+                                                                <script>
+                                                                    CKEDITOR.replace( 'editor1' );
+                                                                </script>
                                                                 <br>
                                                                 <input type="hidden" name="idartikel" value="<?= $idartikel; ?>">
                                                                 <button type="submit" class="btn btn-primary btn-block" name="updateartikel">Update</button>
@@ -247,7 +274,7 @@ if (isset($_SESSION['log'])) {
 
                                                         <form method="post">
                                                             <div class="modal-body">
-                                                                Apakah Anda yakin ingin hapus data <?=$judul;?>?
+                                                                Apakah Anda yakin ingin hapus data "<i><?=$judul;?></i>"?
                                                                <br><br>
                                                                <input type="hidden" name="idartikel" value="<?=$idartikel;?>">
                                                                 <button type="submit" class="btn btn-danger btn-block" name="hapus_artikel">Hapus</button>
@@ -334,16 +361,11 @@ if (isset($_SESSION['log'])) {
                     <input type="file"  name="gambar" id="imgInp" onchange="loadFile(event)" style="color: teal;"/><br><br>
                     <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
                     <h3 id="status"></h3>
-                    <p id="loaded_n_total" style="color: teal;"></p>
-
-                                              
+                    <p id="loaded_n_total" style="color: teal;"></p>                               
                     <script>
                     function _(el) {
                     return document.getElementById(el);
                     }
-
-                    
-
                     var loadFile = function(event) {
                         
                         var file = _("imgInp").files[0];
@@ -360,12 +382,7 @@ if (isset($_SESSION['log'])) {
                         if (file) {
                           blah.src = URL.createObjectURL(file)
                         }
-                      
-                        
-
-
                     };
-
                     function progressHandler(event) {
                         _("loaded_n_total").innerHTML = "Berhasil upload gambar " + event.loaded + " bytes of " + event.total;
                         var percent = (event.loaded / event.total) * 100;
@@ -384,13 +401,15 @@ if (isset($_SESSION['log'])) {
                         function abortHandler(event) {
                         _("status").innerHTML = "Upload Aborted";
                         }
-
-                        
                     </script>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea placeholder="Masukkan Deskripsi" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
+                        <textarea id="editor1" placeholder="Masukkan Deskripsi" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
+                        <script>
+                            CKEDITOR.replace( 'editor1' );
+                        </script>
+
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" name="submit_artikel">Submit</button>
                 </div>
