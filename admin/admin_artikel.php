@@ -8,14 +8,11 @@ if (isset($_SESSION['log'])) {
 }
 
 require 'header.php';
-
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-      <!-- partial -->
-      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
         <li class="nav-item">
@@ -98,7 +95,7 @@ require 'header.php';
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idartikel; ?>">
                                                 <i class="mdi mdi-fingerprint"></i>
                                                 </button>
-                                        </center>
+                                                </center>
                                                 </td>
                                             </tr>
 
@@ -227,7 +224,6 @@ require 'header.php';
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. TADS All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
         </footer> 
         <!-- partial -->
