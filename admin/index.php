@@ -33,6 +33,7 @@ if (isset($_SESSION['log'])) {
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
   <div class="container-scroller">
@@ -80,19 +81,48 @@ if (isset($_SESSION['log'])) {
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
           <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme" onclick="changeBgColor1('#ffffff');"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme" onclick="changeBgColor1('#232227');"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          
+
           <p class="settings-heading mt-2">HEADER SKINS</p>
           <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
+            <div class="tiles success" onclick="changeBgColor2('#57B657');"></div> 
+            <div class="tiles warning" onclick="changeBgColor2('#ffc480');"></div>
+            <div class="tiles danger" onclick="changeBgColor2('#FF4747');"></div>
+            <div class="tiles info" onclick="changeBgColor2('#248AFD');"></div>
+            <div class="tiles dark" onclick="changeBgColor2('#495560');"></div>
+            <div class="tiles default" onclick="changeBgColor2('#ffffff');"></div>
           </div>
         </div>
       </div>
+      <!-- header & sidebar akan berubah warna -->
+      <!-- <script>
+        function changeBgColor2(color){
+            if (color) window.localStorage.setItem('bgColor', color);
+            else if (!(color = window.localStorage.getItem('bgColor'))) return;
+            var elements = document.querySelectorAll(".navbar-menu-wrapper,.navbar-brand-wrapper,.sidebar")
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.background=color;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => changeBgColor2());
+        </script> -->
+      <!-- header saja yang akan berubah warna -->
+      <script>
+      function changeBgColor2(color){
+          if (color) window.localStorage.setItem('bgColor', color);
+          else if (!(color = window.localStorage.getItem('bgColor'))) return;
+          var elements = document.querySelectorAll(".navbar-menu-wrapper,.navbar-brand-wrapper")
+          for (var i = 0; i < elements.length; i++) {
+              elements[i].style.background=color;
+          }
+      }
+
+      window.addEventListener('DOMContentLoaded', () => changeBgColor2());
+      </script>
+
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -192,6 +222,18 @@ if (isset($_SESSION['log'])) {
   <script src="../js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
 </body>
+<script>
+  jQuery($ => {
+  let $body = $('body');
+  let defaultBgColor = localStorage.getItem('body-bg-color');
+  defaultBgColor && $body.css('background-color', defaultBgColor);
 
+  $('.change-color').on('click', e => {
+    let bgColor = $(e.target).css('background-color');
+    $body.css('background-color', bgColor);
+    localStorage.setItem('body-bg-color', bgColor);
+  });
+});
+</script>
 </html>
 
