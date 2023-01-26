@@ -1,12 +1,14 @@
 <?php
 require 'function.php';
-require 'header.php';
 
 //jika sudah masuk dashboard
 if (isset($_SESSION['log'])) {
 } else {
     header('location:login.php');
 }
+
+require 'header.php';
+
 ?>
 
 
