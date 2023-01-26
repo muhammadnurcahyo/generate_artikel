@@ -4,7 +4,7 @@ require('function.php');
 //cek login
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
 
     //mencocokan data dengan database
@@ -62,10 +62,9 @@ if (isset($_SESSION['log'])) {
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="../images/logo.svg" alt="logo">
+                <!-- logo here -->
               </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
+              <h6 class="font-weight-light" style="text-align: center;">Sign in to continue.</h6>
               <form class="pt-3" method="post">
                 <div class="form-group">
                   <label for="small mb-1" for="inputEmailAddress">Email</label>
@@ -81,20 +80,9 @@ if (isset($_SESSION['log'])) {
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      Keep me signed in
-                    </label>
+                    
                   </div>
-                  <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
-                <div class="mb-2">
-                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                    <i class="ti-facebook mr-2"></i>Connect using facebook
-                  </button>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                  <!-- <a href="#" class="auth-link text-black">Forgot password?</a> -->
                 </div>
               </form>
             </div>

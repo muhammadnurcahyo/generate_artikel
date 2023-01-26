@@ -155,7 +155,7 @@ if (isset($_SESSION['log'])) {
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <center>
-                                                    <button type="button" class="btn btn-success">
+                                                    <button type="button" class="btn btn-success" disabled>
                                                     <i class="mdi mdi-eye"></i>
                                                     </button>
 
@@ -272,11 +272,8 @@ if (isset($_SESSION['log'])) {
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. TADS All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
           </div>
         </footer> 
         <!-- partial -->
@@ -333,8 +330,8 @@ if (isset($_SESSION['log'])) {
                 <div class="modal-body">
                     <label for="text">Judul</label>
                     <input type="text" name="judul" placeholder="Masukkan Judul" class="form-control" required> <br>
-                    <img id="output" width="100%" style="border-radius: 15px;"/><br><br>
-                    <input type="file"  name="gambar" id="gambar" onchange="loadFile(event)" style="color: teal;"/><br><br>
+                    <img id="blah" width="100%" style="border-radius: 15px;"/><br><br>
+                    <input type="file"  name="gambar" id="imgInp" onchange="loadFile(event)" style="color: teal;"/><br><br>
                     <progress id="progressBar" value="0" max="100" style="width:100%;"></progress>
                     <h3 id="status"></h3>
                     <p id="loaded_n_total" style="color: teal;"></p>
@@ -345,11 +342,13 @@ if (isset($_SESSION['log'])) {
                     return document.getElementById(el);
                     }
 
+                    
+
                     var loadFile = function(event) {
                         
-                        var file = _("gambar").files[0];
+                        var file = _("imgInp").files[0];
                         var formdata = new FormData();
-                        formdata.append("gambar", file);
+                        formdata.append("imgInp", file);
                         var ajax = new XMLHttpRequest();
                         ajax.upload.addEventListener("progress", progressHandler, false);
                         ajax.addEventListener("load", completeHandler, false);
@@ -358,12 +357,11 @@ if (isset($_SESSION['log'])) {
                         ajax.open("POST", "function.php"); 
                         ajax.send(formdata);
 
-
-                        var output = document.getElementById('output');
-                        output.src = URL.createObjectURL(event.target.files[0]);
-                        output.onload = function() {
-                        URL.revokeObjectURL(output.src) // membersihkan penyimpanan
+                        if (file) {
+                          blah.src = URL.createObjectURL(file)
                         }
+                      
+                        
 
 
                     };
@@ -386,6 +384,8 @@ if (isset($_SESSION['log'])) {
                         function abortHandler(event) {
                         _("status").innerHTML = "Upload Aborted";
                         }
+
+                        
                     </script>
 
                     <div class="form-group">
