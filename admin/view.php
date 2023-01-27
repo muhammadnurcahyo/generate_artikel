@@ -2,18 +2,20 @@
  require 'function.php';
  require 'header-view.php';
 
-
- $idt = $_GET['idartikel'];
   
- $result = mysqli_query($conn, "SELECT * FROM t_artikel WHERE idartikel=$idt");
+ $result = mysqli_query($conn, "SELECT * FROM t_artikel order by rand(), idartikel");
   
  while($data = mysqli_fetch_array($result))
  {
      $deskripsi = $data['deskripsi'];
+     $img = $data['gambar'];
  }
  ?>
 
 <body>
-<?php echo $deskripsi; ?>
+<?php
+    echo "<img src='../uploads/" . $img . "'></img>";
+    echo $deskripsi; 
+?>
     
 </body>
