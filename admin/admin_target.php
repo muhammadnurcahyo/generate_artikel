@@ -60,13 +60,13 @@ require 'header.php';
                   </thead>
                   <tbody>
                   <?php
-                                        $ambildata = mysqli_query($conn, "select * from target");
-                                        $i = 1;
-                                        while ($data = mysqli_fetch_array($ambildata)) {
-                                            $keyword = $data['keyword'];
-                                            $link_target = $data['link_target'];
-                                            $idt = $data['idtarget']
-                                        ?>
+                  $ambildata = mysqli_query($conn, "select * from target");
+                  $i = 1;
+                  while ($data = mysqli_fetch_array($ambildata)) {
+                    $keyword = $data['keyword'];
+                    $link_target = $data['link_target'];
+                    $idt = $data['idtarget']
+                      ?>
                     <tr>
                     <td><?= $i++; ?></td>
                                                 <td><?= $keyword; ?></td>

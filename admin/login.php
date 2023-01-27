@@ -3,29 +3,31 @@ require('function.php');
 
 //cek login
 if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
+  $email = $_POST['email'];
+  $password = md5($_POST['password']);
 
 
-    //mencocokan data dengan database
-    $cek_db = mysqli_query($conn, "Select * from login where email='$email' and password= '$password'");
+  //mencocokan data dengan database
+  $cek_db = mysqli_query($conn, "Select * from login where email='$email' and password= '$password'");
 
-    //hasil
-    $hasil = mysqli_num_rows($cek_db);
+  //hasil
+  $hasil = mysqli_num_rows($cek_db);
 
-    if ($hasil > 0) {
-        $_SESSION['log'] = 'true';
-        header('location:index.php');
-    } else {
-        header('location:login.php');
-    };
-};
+  if ($hasil > 0) {
+    $_SESSION['log'] = 'true';
+    header('location:index.php');
+  } else {
+    header('location:login.php');
+  }
+  ;
+}
+;
 
 //untuk memastikan jika sudah login akan masuk ke index, jk blm akan di login
 if (isset($_SESSION['log'])) {
-    header('location:index.php');
+  header('location:index.php');
 } else {
-   
+
 }
 
 ?>
@@ -68,19 +70,21 @@ if (isset($_SESSION['log'])) {
               <form class="pt-3" method="post">
                 <div class="form-group">
                   <label for="small mb-1" for="inputEmailAddress">Email</label>
-                  <input class="form-control form-control-lg" id="exampleInputEmail1" name="email" type="email" placeholder="Enter email address" >
+                  <input class="form-control form-control-lg" id="exampleInputEmail1" name="email" type="email"
+                    placeholder="Enter email address">
                 </div>
                 <div class="form-group">
-                <label for="small mb-1" for="password">Password</label>
-                  <input type="password" class="form-control form-control-lg" id="inputPassword" name="password" placeholder="Password">
+                  <label for="small mb-1" for="password">Password</label>
+                  <input type="password" class="form-control form-control-lg" id="inputPassword" name="password"
+                    placeholder="Password">
                 </div>
                 <div class="mt-3">
                   <button class="btn btn-primary col-lg-12" name="login">
-                  login</button>
+                    login</button>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
-                    
+
                   </div>
                   <!-- <a href="#" class="auth-link text-black">Forgot password?</a> -->
                 </div>
