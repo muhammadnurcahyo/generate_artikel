@@ -20,7 +20,6 @@
         }
     }
 
-     
 //tambah data artikel
 if (isset($_POST['submit_artikel'])) {
     $judul = $_POST['judul'];
@@ -60,6 +59,12 @@ if (isset($_POST['submit_artikel'])) {
 
 }
 
+
+    // view artikel
+    if(isset($_POST['view'])){
+    $viewartikel = $_POST['idartikel'];
+    echo "window.location('view.php?idartikel=" . $viewartikel;"')";
+    }
 
     //update target
     if(isset($_POST['updatetarget'])){
@@ -112,6 +117,7 @@ if (isset($_POST['submit_artikel'])) {
         }
     
     }
+
     // hapus data target
     if(isset($_POST['hapus_target'])){
         $idt = $_POST['idt'];

@@ -54,7 +54,6 @@ require 'header.php';
                     <th>No.</th>
                     <th>Judul</th>
                     <th>Gambar</th>
-                    <th>Deskripsi</th>
                     <th>Aksi</th>
                     </tr>
                   </thead>
@@ -76,15 +75,15 @@ require 'header.php';
                                                 <td><center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#lihat_image<?= $idartikel; ?>">
                                                 <i class="mdi mdi-eye"></i>
                                                 </button></center></td>
-                                                <td><center><button type="button" class="btn btn-success" data-toggle="modal" data-target="#lihat_deskripsi<?= $idartikel; ?>">
-                                                <i class="mdi mdi-eye"></i>
-                                                </button></center></td>
                                                 <td>
                                                 <!-- Button trigger modal -->
                                                 <center>
-                                                <button type="button" class="btn btn-success" disabled>
+
+                                                <a href="view.php?idartikel=<?php echo $idartikel; ?>">
+                                                <button type="button" class="btn btn-success">
                                                 <i class="mdi mdi-eye"></i>
                                                 </button>
+                                                </a>
 
                                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit_artikel<?= $idartikel; ?>">
                                                 <i class="mdi mdi-account-search"></i>
@@ -119,25 +118,6 @@ require 'header.php';
                                                 </div>
                                             </div>
 
-                                            <!-- Deskripsi Modal -->
-                                            <div class="modal fade" id="lihat_deskripsi<?= $idartikel; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLongTitle">Data Deskripsi</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-
-                                                        <form method="post" enctype="multipart/form-data">
-                                                            <div class="modal-body">
-                                                              <?= $deskripsi; ?>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
 
                                             <!-- Update Modal -->
                                             <div class="modal fade" id="edit_artikel<?= $idartikel; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -328,10 +308,32 @@ require 'header.php';
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea id="editor1" placeholder="Masukkan Deskripsi" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
-                        <script>
-                            CKEDITOR.replace( 'editor1' );
+                        <textarea id="editor" placeholder="Masukkan Deskripsi" name="deskripsi" id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
+                        <script src="../ckfinder/ckfinder.js"></script>
+                        <script type="text/javascript">
+                        ClassicEditor
+                            .create( document.querySelector( '#editor' ), {
+                                ckfinder: {
+                                    uploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json'
+                                },
+                                toolbar: [
+    {
+        label: 'Others',
+        tooltip: 'Basic formatting features',
+        items: [ 'bold', 'italic' ]
+    },
+    'ckfinder',
+    'insertTable',
+    '|',
+    'undo', 'redo'
+]
+
+                                
+                            } )
                         </script>
+
+
+
 
                     </div>
                     <button type="submit" class="btn btn-primary btn-block" name="submit_artikel">Submit</button>
