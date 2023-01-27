@@ -316,19 +316,28 @@ require 'header.php';
                                 ckfinder: {
                                     uploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json'
                                 },
-                                toolbar: [
-    {
-        label: 'Others',
-        tooltip: 'Basic formatting features',
-        items: [ 'bold', 'italic' ]
-    },
-    'ckfinder',
-    'insertTable',
-    '|',
-    'undo', 'redo'
-]
+                                toolbar: {
+                            items: [
+                                'ckfinder',
+                                'imageUpload',
+                                'heading', '|',
+                                'alignment', '|',
+                                'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+                                'link', '|',
+                                'bulletedList', 'numberedList', 'todoList',
+                                '-', // break point
+                                'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor', '|',
+                                'code', 'codeBlock', '|',
+                                'insertTable', '|',
+                                'outdent', 'indent', '|',
+                                'blockQuote', '|',
+                                'undo', 'redo'
+                            ],
+                            shouldNotGroupWhenFull: true
+                        }
 
-                                
+
+                                                                
                             } )
                         </script>
 

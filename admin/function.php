@@ -60,12 +60,6 @@ if (isset($_POST['submit_artikel'])) {
 }
 
 
-    // view artikel
-    if(isset($_POST['view'])){
-    $viewartikel = $_POST['idartikel'];
-    echo "window.location('view.php?idartikel=" . $viewartikel;"')";
-    }
-
     //update target
     if(isset($_POST['updatetarget'])){
         $idt = $_POST['idt'];
