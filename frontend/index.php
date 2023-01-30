@@ -55,7 +55,8 @@
 
   <?php
   include("../admin/function.php");
-  $ambildata = mysqli_query($conn, "select * from t_artikel order by rand(), idartikel LIMIT 1");
+  $ambildata = mysqli_query($conn, "select * from t_artikel order by rand(), idartikel");
+  $get_link = mysqli_query($conn, "select * from target order by rand(), link_target");
 
 
   while ($data = mysqli_fetch_array($ambildata)) {
@@ -64,6 +65,10 @@
     $judul = $data['judul'];
   }
 
+  while ($fetch = mysqli_fetch_array($get_link)){
+    $link = $fetch['link_target'];
+    $keyword = $fetch['keyword'];
+  }
   
   ?>
       <!-- Page header Start -->
@@ -93,6 +98,15 @@
                 <div class="post-content">
                   <h3 style="text-align: center;"><?=$judul ?></h3><br>
                   <p><?=$deskripsi; ?></p>
+                  <?php
+                  preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $link, $match);
+                  
+                  echo '<a href="'.implode("", $match[0]).'">'.$keyword.'</a>'; 
+                  
+                  ?>
+                  <p>
+                  
+                  </p>
                   <br>
                 </div>
               </div>
