@@ -20,6 +20,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/favicon.png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
   <script src="../ckfinder/ckfinder.js"></script>
   <script>
     if ( window.history.replaceState ) {

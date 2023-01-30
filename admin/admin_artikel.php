@@ -169,7 +169,6 @@ require 'header.php';
                                                     <textarea id="editor1" placeholder="Masukkan Deskripsi" name="deskripsi"
                                                         id="exampleFormControlTextarea1" rows="3"
                                                         class="form-control ckeditor"><?= $deskripsi; ?></textarea>
-                                                    <script src="../ckeditor/ckeditor.js"></script>    
                                                     <script type="text/javascript">
                                                         ClassicEditor
                                                             .create(document.querySelector('#editor1'), {
@@ -364,7 +363,6 @@ require 'header.php';
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
                         <textarea id="editor2" placeholder="Masukkan Deskripsi" name="deskripsi"
                             id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
-                        <script src="../ckeditor/ckeditor.js"></script>
                         <script type="text/javascript">
                             ClassicEditor
                                 .create(document.querySelector('#editor2'), {
