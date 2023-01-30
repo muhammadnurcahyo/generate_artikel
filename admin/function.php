@@ -41,7 +41,6 @@ if (isset($_POST['submit_artikel'])) {
             } else {
                 // 
             }
-
         } else {
             // no expression = file yang di upload bukan gambar
         }
@@ -55,8 +54,6 @@ if (isset($_POST['submit_artikel'])) {
             echo "<script>alert('Data berhasil ditambah.');window.location='admin_artikel.php';</script>";
         }
     }
-
-
 }
 
 
@@ -95,10 +92,8 @@ if (isset($_POST['updateartikel'])) {
                 die("Query gagal dijalankan: " . mysqli_errno($conn) .
                     " - " . mysqli_error($conn));
             } else {
-
             }
         } else {
-
         }
     } else {
         $update = mysqli_query($conn, "update t_artikel set judul='$judul', deskripsi='$deskripsi' where idartikel='$idartikel'");
@@ -106,10 +101,8 @@ if (isset($_POST['updateartikel'])) {
             die("Query gagal dijalankan: " . mysqli_errno($conn) .
                 " - " . mysqli_error($conn));
         } else {
-
         }
     }
-
 }
 
 // hapus data target
@@ -138,4 +131,3 @@ if (isset($_POST['hapus_artikel'])) {
         header('location:admin_artikel.php');
     }
 }
-?>
