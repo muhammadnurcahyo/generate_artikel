@@ -108,6 +108,7 @@ require 'header.php';
 <!-- Custom js for this page-->
 <script src="../js/dashboard.js"></script>
 <script src="../js/Chart.roundedBarCharts.js"></script>
+<script src="../ckeditor/ckeditor.js" type="text/javascript"></script>
 <!-- End custom js for this page-->
 </body>
 <script>

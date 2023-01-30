@@ -21,6 +21,11 @@
   <link rel="shortcut icon" href="../images/favicon.png" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../ckfinder/ckfinder.js"></script>
+  <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 
 
 
