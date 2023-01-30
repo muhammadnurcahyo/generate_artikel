@@ -40,6 +40,7 @@ if (isset($_POST['submit_artikel'])) {
                     " - " . mysqli_error($conn));
             } else {
                 // 
+                
             }
         } else {
             // no expression = file yang di upload bukan gambar
@@ -52,6 +53,7 @@ if (isset($_POST['submit_artikel'])) {
                 " - " . mysqli_error($conn));
         } else {
             echo "<script>alert('Data berhasil ditambah.');window.location='admin_artikel.php';</script>";
+
         }
     }
 }
