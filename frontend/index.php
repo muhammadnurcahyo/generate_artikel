@@ -55,11 +55,16 @@
 
   <?php
   include("../admin/function.php");
-  $ambildata = mysqli_query($conn, "select * from t_artikel LIMIT 1");
-  $jmlartikel = mysqli_num_rows($ambildata);
+  $ambildata = mysqli_query($conn, "select * from t_artikel order by rand(), idartikel LIMIT 1");
 
-  if ($jmlartikel > 0) {
-    while ($row = mysqli_fetch_assoc($ambildata)) {
+
+  while ($data = mysqli_fetch_array($ambildata)) {
+    $deskripsi = $data['deskripsi'];
+    $gambar = $data['gambar'];
+    $judul = $data['judul'];
+  }
+
+  
   ?>
       <!-- Page header Start -->
       <section class="page-header">
@@ -67,8 +72,8 @@
           <div class="row justify-content-md-center">
             <div class="col-md-12">
               <div class="breadcrumb-wrapper text-center">
-                <h2><?= $row["judul"]; ?></h2>
-                <p><a href="../frontend/index.php">Home </a>/ <?= $row["judul"]; ?></p>
+                <h2><?= $judul; ?></h2>
+                <p><a href="../frontend/index.php">Home </a>/ <?= $judul; ?></p>
               </div>
             </div>
           </div>
@@ -82,12 +87,12 @@
           <div class="row">
             <div class="col-lg-12 col-md-12 col-xs-12">
               <div class="blog-post">
-                <div class="post-thumb">
-                  <img src="../assets/img/blog/blog-1-big.jpg" alt="">
-                </div>
+                <div class="post-thumb"> <br>
+                  <img src="../uploads/<?=$gambar;?>" style="width:auto; margin:auto; display:block;" alt="">
+                </div> <br>
                 <div class="post-content">
-                  <h3><?= $row["judul"]; ?></h3>
-                  <p><?= $row["deskripsi"]; ?></p>
+                  <h3 style="text-align: center;"><?=$judul ?></h3><br>
+                  <p><?=$deskripsi; ?></p>
                   <br>
                 </div>
               </div>
@@ -96,8 +101,6 @@
         </div>
       </div>
   <?php
-    }
-  }
   ?>
 
   <!-- Blog Section End  -->
