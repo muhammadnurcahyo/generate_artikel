@@ -361,11 +361,11 @@ require 'header.php';
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Deskripsi</label>
-                        <textarea id="editor2" placeholder="Masukkan Deskripsi" name="deskripsi"
+                        <textarea id="editor" placeholder="Masukkan Deskripsi" name="deskripsi"
                             id="exampleFormControlTextarea1" rows="3" class="form-control ckeditor"></textarea>
                         <script type="text/javascript">
                             ClassicEditor
-                                .create(document.querySelector('#editor2'), {
+                                .create(document.querySelector('#editor'), {
                                     ckfinder: {
                                         uploadUrl: '../ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json'
                                     },
