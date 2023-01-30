@@ -109,7 +109,7 @@ require 'header.php';
                                 </tr>
 
                                 <!-- Gambar Modal -->
-                                <div class="modal fade" id="lihat_image<?= $idartikel; ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="lihat_image<?= $idartikel; ?>"  role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -132,7 +132,7 @@ require 'header.php';
 
 
                                 <!-- Update Modal -->
-                                <div class="modal fade" id="edit_artikel<?= $idartikel; ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="edit_artikel<?= $idartikel; ?>"  role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -211,7 +211,7 @@ require 'header.php';
 
 
                                 <!-- Modal delete -->
-                                <div class="modal fade" id="delete<?= $idartikel; ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete<?= $idartikel; ?>"  role="dialog"
                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -297,7 +297,7 @@ require 'header.php';
 <!-- End custom js for this page-->
 </body>
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="exampleModalCenter"  role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
