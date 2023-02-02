@@ -548,6 +548,7 @@ hr {
 
 .navbar {
   padding: 0;
+
 }
 
 .navbar li.active a.nav-link {
@@ -1313,6 +1314,12 @@ hr {
 
 #blog-single {
   padding: 60px 0;
+ 
+}
+
+#atas{
+  background: #fff;
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.1);
 }
 
 #blog-single .blog-post {
@@ -1320,6 +1327,7 @@ hr {
   box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 #blog-single .blog-post .post-thumb img {
@@ -1330,8 +1338,13 @@ hr {
   padding: 30px;
 }
 
-#blog-single .blog-post .post-content h3 {
+#blog-single .blog-post .post-content h1 {
   font-size: 22px;
+  padding-bottom: 10px;
+}
+
+#blog-single .blog-post .post-content p {
+  font-size: 14px;
   padding-bottom: 10px;
 }
 

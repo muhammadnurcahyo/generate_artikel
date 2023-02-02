@@ -78,7 +78,7 @@
             <div class="col-md-12">
               <div class="breadcrumb-wrapper text-center">
                 <h2><?= $judul; ?></h2>
-                <p><a href="../frontend/index.php">Home </a>/ <?= $judul; ?></p>
+                <!-- <p><a href="../frontend/index.php">Home </a>/ <?= $judul; ?></p> -->
               </div>
             </div>
           </div>
