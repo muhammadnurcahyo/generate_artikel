@@ -60,7 +60,7 @@ require 'header.php';
                         </thead>
                         <tbody>
                             <?php
-                            $ambildata = mysqli_query($conn, "select * from t_artikel");
+                            $ambildata = mysqli_query($conn, "select * from t_artikel ");
                             $i = 1;
                             while ($data = mysqli_fetch_array($ambildata)) {
                                 $judul = $data['judul'];
