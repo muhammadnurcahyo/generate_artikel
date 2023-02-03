@@ -1,36 +1,16 @@
 <?php
-error_log(0);
-require '../admin/function.php';
 
-$time = "1300";    
-$time = substr($time,0,2).'asd'.substr($time,2,2);
+$text = array('Copyright A', 'Copyright B', 'Copyright C', 'Copyright D');
+$rand = rand(0, count($text));
+$content = '<p>Paragraph1</p>';
+$target = '<p>';
+$ptags = explode($target, $content);
+$new_content = array_shift($ptags);
 
-
-$ambildata = mysqli_query($conn, "select * from t_artikel order by rand(), idartikel");
-$get_link = mysqli_query($conn, "select * from target order by rand(), link_target");
-
-
-while ($data = mysqli_fetch_array($ambildata)) {
-  $deskripsi = $data['deskripsi'];
-  $gambar = $data['gambar'];
-  $judul = $data['judul'];
+foreach ($ptags as $i => $p) {
+    $new_content .= $text[$i % $rand] . $target . $p;
 }
-
-while ($fetch = mysqli_fetch_array($get_link)){
-  $link = $fetch['link_target'];
-  $keyword = $fetch['keyword'];
-}
-
-// $string = "abc123"; //sebagai $deskripsi nantinya
-
-// $random_position = rand(0,strlen($string)-1); //posisi yang akan di sisipkan
-
-// $chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789-_"; // diambil dari $keyword
-
-
-// $newString = substr($string,0,$random_position).$chars.substr($string,$random_position);
-// echo $newString;
-
+var_export($new_content);
 
 
 ?>
