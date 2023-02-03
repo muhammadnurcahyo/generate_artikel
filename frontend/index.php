@@ -69,6 +69,22 @@
     $link = $fetch['link_target'];
     $keyword = $fetch['keyword'];
   }
+
+  function htmlToArray($html_string = ''){
+    $dom = new DOMDocument();
+    $dom->loadHTML($html_string);
+
+    foreach($dom->getElementsByTagName('p') as $node) {
+      $title = $dom->saveHTML($node);
+      $content[$title] = array();
+
+      while(($node = $node->nextSibling) && $node->nodeName !== 'p' && 'img') {
+          $content[$title] = $dom->saveHTML($node);
+      }
+    }
+
+    return $content;
+  }
   
   ?>
       <!-- Page header Start -->
@@ -96,13 +112,112 @@
                   <img src="../uploads/<?=$gambar;?>" style="width:auto; margin:auto; display:block;" alt="">
                 </div> <br>
                 <div class="post-content">
-                  <h3 style="text-align: center;"><?=$judul ?></h3><br>
-                  <p><?=$deskripsi; ?></p>
                   <?php
                   preg_match_all('#\bhttps?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $link, $match);
                   
-                  echo '<a href="'.implode("", $match[0]).'">'.$keyword.'</a>'; 
+                  // echo '<a href="'.implode("", $match[0]).'">'.$keyword.'</a>'; 
                   
+                  ?>
+                  <h3 style="text-align: center;"><?=$judul ?></h3><br>
+                  <?php 
+
+
+                  // $random_position = rand(0,strlen($deskripsi)-1); //posisi yang akan di sisipkan
+
+                  // $chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789-_"; // diambil dari $keyword
+
+
+                  // $newString = substr($deskripsi,0,$random_position).' '.'<a href="'.implode("", $match[0]).'">'.$keyword.'</a>'.' '.substr($deskripsi,$random_position);
+
+                  // die($content_arr);
+                  
+                  $deskripsi = "<p>Pulvinar sociosqu dolor Libero venenatis magnis egestas feugiat consectetuer adipiscing pulvinar semper </p>
+<p>Egestas primis. </p>
+<p>Amet volutpat .</p>";
+
+                  
+                  $content_arr_p = explode('<p>',$deskripsi);
+
+                  $new = '';
+                  $old = '';
+
+                  $stop1 = false;
+
+                  $total1 = rand(0, count($content_arr_p) - 1);
+
+                  foreach ($content_arr_p as $key1 => $row) {
+
+                    $stop2 = false;
+                    
+                    if($stop1){
+                      break;
+                    }
+                    
+                    if($key1 == $total1){
+                    
+                      $content_arr_c = explode('<', $row);
+
+                      $total2 = rand(0, count($content_arr_c) - 1);
+
+                      if(count($content_arr_c) == 0){
+                        $new   = $keyword;
+                        $stop1 = true;
+                      }
+
+                      foreach ($content_arr_c as $key => $value) {
+
+                        $stop3 = false;
+
+                        if($stop2){
+                          break;
+                        }
+
+                        if($key == $total2){
+
+                          $split_val = explode(' ', $value);
+
+                          $total3 = rand(0, count($split_val) - 1);
+
+                          if(count($split_val) == 0){
+                            $new = $keyword;
+                            $stop1 = true;
+                            $stop2 = true;
+                          }
+
+                          foreach ($split_val as $key3 => $value2) {
+
+                            if($stop3){
+                              break;
+                            }
+                            
+                            if($key3 == $total3){
+                              $old = $value2;
+                              $new = $value2 . ' ' .$keyword.' ';
+                              // die($value);
+                  
+                              $stop1 = true;
+                              $stop2 = true;
+                              $stop3 = true;
+                            }
+
+                          }
+                        }
+
+                      }
+
+                    }
+                      
+
+                  }
+
+                  echo 'old ' . $old;
+                  echo ' new ' . $new;
+
+                  echo $deskripsi;
+
+                  echo str_replace($old, $new, $deskripsi);
+
+
                   ?>
                   <p>
                   
