@@ -78,10 +78,10 @@
       <div id="blog-single">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-xs-12">
-              <div class="blog-post">
-                <div class="post-thumb" style="margin-top: -25px;"> <br>
-                  <img class="img-thumbnail" src="uploads/<?=$gambar;?>" style="width:auto; margin:auto; display:block;" alt="">
+            <div class="col-lg-12 col-md-12 col-xs-12" >
+              <div class="blog-post" style="border-radius: 25px;">
+                <div class="post-thumb" style="display:block; border-radius: 25px; padding: 10px;"> <br>
+                  <img class="img-thumbnail" src="uploads/<?=$gambar;?>" style="width:auto; margin:auto; display:block; border-radius: 25px;" alt="">
                 </div> <br>
                 <div class="post-content">
                   <?php
