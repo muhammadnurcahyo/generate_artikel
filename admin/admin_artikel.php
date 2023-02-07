@@ -87,7 +87,7 @@ require 'header.php';
                                         <!-- Button trigger modal -->
                                         <center>
 
-                                            <a href="view.php">
+                                            <a href="../">
                                                 <button type="button" class="btn btn-success">
                                                     <i class="mdi mdi-eye"></i>
                                                 </button>
