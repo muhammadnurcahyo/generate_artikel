@@ -92,7 +92,7 @@
                   }
                   
                   ?>
-                  <h3 style="text-align: center;"><?=$judul ?></h3><br>
+                  <h1 style="text-align: center; font-size:26px"><?=$judul ?></h1><br>
                   <?php 
 
 

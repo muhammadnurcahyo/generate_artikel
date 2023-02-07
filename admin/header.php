@@ -116,7 +116,7 @@
         function changeBgColor2(color) {
           if (color) window.localStorage.setItem('bgColor', color);
           else if (!(color = window.localStorage.getItem('bgColor'))) return;
-          var elements = document.querySelectorAll(".navbar-menu-wrapper,.navbar-brand-wrapper")
+          var elements = document.querySelectorAll(".navbar-menu-wrapper,.navbar-brand-wrapper, .nav-link:active")
           for (var i = 0; i < elements.length; i++) {
             elements[i].style.background = color;
           }

@@ -60,7 +60,7 @@ require 'header.php';
                         </thead>
                         <tbody>
                             <?php
-                            $ambildata = mysqli_query($conn, "select * from t_artikel ");
+                            $ambildata = mysqli_query($conn, "SELECT * FROM t_artikel ORDER BY idartikel DESC; ");
                             $i = 1;
                             while ($data = mysqli_fetch_array($ambildata)) {
                                 $judul = $data['judul'];
@@ -311,7 +311,7 @@ require 'header.php';
             <form id="upload_form" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <label for="text">Judul</label>
-                    <input type="text" name="judul" placeholder="Masukkan Judul" class="form-control" required> <br>
+                    <input type="text" name="judul" placeholder="Masukkan Judul" class="form-control"  required> <br>
                     <img id="blah" width="100%" style="border-radius: 15px;" /><br><br>
                     <input type="file" name="gambar" id="imgInp" onchange="loadFile(event)"
                         style="color: teal;" /><br><br>
